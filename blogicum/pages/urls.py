@@ -14,6 +14,5 @@ urlpatterns = [
         'rules/',
         views.rules,
         name='rules'
-
     )
 ]
