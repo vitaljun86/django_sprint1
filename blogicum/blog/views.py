@@ -45,7 +45,11 @@ posts = [
 ]
 
 
+# def index(request):
+#     context = {'posts': posts}
+#     return render(request, 'blog/index.html', context)
 def index(request):
+    posts = Post.objects.all().order_by('-date')  # Сортировка по дате, инвертированный порядок
     context = {'posts': posts}
     return render(request, 'blog/index.html', context)
 
