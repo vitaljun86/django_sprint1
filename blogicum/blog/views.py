@@ -45,12 +45,9 @@ posts = [
 ]
 
 
-# def index(request):
-#     context = {'posts': posts}
-#     return render(request, 'blog/index.html', context)
 def index(request):
-    posts = Post.objects.all().order_by('-date')  # Сортировка по дате, инвертированный порядок
-    context = {'posts': posts}
+    reversed_posts = posts[::-1]
+    context = {'posts': reversed_posts}
     return render(request, 'blog/index.html', context)
 
 
@@ -60,7 +57,7 @@ def post_detail(request, id):
     return render(request, templates, context)
 
 
-def category_post(request, category_slug):
+def category_posts(request, category_slug):
     templates = 'blog/category.html'
     context = {'slug': category_slug}
     return render(request, templates, context)
