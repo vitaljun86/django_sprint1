@@ -4,10 +4,8 @@ from django.shortcuts import render
 
 
 def about(request):
-    templates = 'pages/about.html'
-    return render(request, templates)
+    return render(request, 'pages/about.html')
 
 
 def rules(request):
-    templates = 'pages/rules.html'
-    return render(request, templates)
+    return render(request, 'pages/rules.html')
