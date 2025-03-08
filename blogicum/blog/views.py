@@ -51,18 +51,15 @@ post_dict = {post['id']: post for post in posts}
 
 
 def index(request):
-    context = {'posts': posts}
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/index.html', {'posts': posts})
 
 
 def post_detail(request, post_id):
     if post_id not in post_dict:
         raise Http404('Page not found')
     post = post_dict[post_id]
-    context = {'post': post}
-    return render(request, 'blog/detail.html', context)
+    return render(request, 'blog/detail.html', {'post': post})
 
 
 def category_posts(request, category_slug):
-    context = {'slug': category_slug}
-    return render(request, 'blog/category.html', context)
+    return render(request, 'blog/category.html', {'slug': category_slug})
