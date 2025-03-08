@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from typing import List, Dict
 
 from django.http import Http404
 
 
-posts = [
+posts: List[Dict[str, str | int]] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -47,7 +48,7 @@ posts = [
 ]
 
 
-post_dict = {post['id']: post for post in posts}
+independent_posts = {post['id']: post for post in posts}
 
 
 def index(request):
@@ -55,9 +56,9 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    if post_id not in post_dict:
+    if post_id not in independent_posts:
         raise Http404('Page not found')
-    post = post_dict[post_id]
+    post = independent_posts[post_id]
     return render(request, 'blog/detail.html', {'post': post})
 
 
